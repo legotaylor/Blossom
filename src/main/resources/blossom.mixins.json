@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "dev.dannytaylor.blossom.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "client": [
+    "gui.screen.TitleScreenMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "mixins": [
+    "fixes.MinecraftAppletMixin",
+    "initializers.MinecraftClientMixin"
+  ]
+}

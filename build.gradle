@@ -1,0 +1,85 @@
+plugins {
+	id 'net.fabricmc.fabric-loom-remap' version "${loom_version}"
+	id 'ploceus' version "${ploceus_version}"
+	id 'maven-publish'
+}
+
+version = project.mod_version
+group = project.maven_group
+
+base {
+	archivesName = project.archives_base_name
+}
+
+repositories {
+	maven { url 'https://repo.sleeping.town/' }
+}
+
+loom {
+	clientOnlyMinecraftJar()
+	mods {
+		"blossom" {
+			sourceSet("main")
+		}
+	}
+	accessWidenerPath = file("src/main/resources/blossom.accesswidener")
+	// fix non-semantic version error
+	runs {
+		client {
+			vmArg "-Dfabric.gameVersion=0.31.20100223"
+		}
+	}
+}
+
+ploceus {
+//	setIntermediaryGeneration(2)
+	clientOnlyMappings()
+}
+
+dependencies {
+	minecraft("com.mojang:minecraft:${project.minecraft_version}")
+	mappings(ploceus.featherMappings(project.feather_build))
+	clientNests(ploceus.nests(project.nests_build))
+	modImplementation("net.fabricmc:fabric-loader:${project.loader_version}")
+	ploceus.dependOsl(project.osl_version, "client")
+
+	include(modImplementation("folk.sisby:kaleido-config:${project.config_version}"))
+}
+
+processResources {
+	inputs.property "version", project.version
+
+	filesMatching("fabric.mod.json") {
+		expand "version": inputs.properties.version
+	}
+}
+
+tasks.withType(JavaCompile).configureEach {
+	it.options.release = 8
+}
+
+java {
+	withSourcesJar()
+	sourceCompatibility = JavaVersion.VERSION_1_8
+	targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+jar {
+	inputs.property "archivesName", project.base.archivesName
+
+	from("licence") {
+		rename { "${it}_${inputs.properties.archivesName}"}
+	}
+}
+
+publishing {
+	publications {
+		create("mavenJava", MavenPublication) {
+			artifactId = project.archives_base_name
+			from components.java
+		}
+	}
+
+	repositories {
+	}
+}
