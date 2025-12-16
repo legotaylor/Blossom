@@ -77,7 +77,7 @@ public class DirectConnectScreen extends Screen {
 		drawCenteredString(this.textRenderer, "Direct Connect", this.width / 2, this.height / 4 - 60 + 20, 0xFFFFFF);
 		drawString(this.textRenderer, "Server Address", i4, this.height / 4 - 60 + 60 + 36, 10526880);
 		BufferBuilder var4 = BufferBuilder.INSTANCE;
-		GL11.glBindTexture(3553, this.minecraft.f_9413506.load("/assets/blossom/atlases/multiplayer.png"));
+		GL11.glBindTexture(3553, this.minecraft.f_9413506.load("/assets/sporeblossom-client/atlases/multiplayer.png"));
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		var4.color(16777215);
 		drawTexture(i4, i5, 0, 0, 200, 20);

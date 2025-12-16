@@ -7,6 +7,7 @@
 
 package dev.dannytaylor.blossom;
 
+import dev.dannytaylor.blossom.block.Blocks;
 import dev.dannytaylor.blossom.config.BlossomConfig;
 import dev.dannytaylor.blossom.log.BlossomLogger;
 import dev.dannytaylor.blossom.util.StaticVariables;
@@ -25,5 +26,6 @@ public class BlossomMain {
 		logs();
 		BlossomLogger.get().info("Initializing Blossom!");
 		configs();
+		Blocks.bootstrap();
 	}
 }

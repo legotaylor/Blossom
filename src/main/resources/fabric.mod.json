@@ -1,6 +1,6 @@
 {
 	"schemaVersion": 1,
-	"id": "blossom",
+	"id": "sporeblossom-client",
 	"version": "${version}",
 	"name": "Blossom",
 	"description": "Multiplayer client for Spore servers",
@@ -12,13 +12,16 @@
 		"sources": "https://github.com/legotaylor/blossom"
 	},
 	"license": "LGPL-3.0-or-later",
-	"icon": "assets/blossom/icon.png",
+	"icon": "assets/sporeblossom-client/icon.png",
 	"environment": "client",
 	"mixins": [
-		"blossom.mixins.json"
+		"sporeblossom-client.mixins.json"
 	],
 	"depends": {
 		"minecraft": "0.31.20100223"
 	},
-  "accessWidener" : "blossom.accesswidener"
+  "breaks": {
+    "sporeblossom-server": "*"
+  },
+  "accessWidener" : "sporeblossom-client.accesswidener"
 }

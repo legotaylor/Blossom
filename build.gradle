@@ -18,11 +18,11 @@ repositories {
 loom {
 	clientOnlyMinecraftJar()
 	mods {
-		"blossom" {
+		"sporeblossom-client" {
 			sourceSet("main")
 		}
 	}
-	accessWidenerPath = file("src/main/resources/blossom.accesswidener")
+	accessWidenerPath = file("src/main/resources/sporeblossom-client.accesswidener")
 	// fix non-semantic version error
 	runs {
 		client {

@@ -14,7 +14,7 @@ import net.fabricmc.loader.api.metadata.ModMetadata;
 import java.util.Optional;
 
 public class StaticVariables {
-	private static final String id = "blossom";
+	private static final String id = "sporeblossom-client";
 
 	public static String getId() {
 		return id;
